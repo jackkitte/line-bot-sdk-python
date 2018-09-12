@@ -91,9 +91,11 @@ class LineBotApi(object):
             'messages': [message.as_json_dict() for message in messages]
         }
 
-        self._post(
+        response = self._post(
             '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
         )
+
+        return response
 
     def push_message(self, to, messages, timeout=None):
         """Call push message API.
@@ -121,9 +123,11 @@ class LineBotApi(object):
             'messages': [message.as_json_dict() for message in messages]
         }
 
-        self._post(
+        response = self._post(
             '/v2/bot/message/push', data=json.dumps(data), timeout=timeout
         )
+
+        return response
 
     def multicast(self, to, messages, timeout=None):
         """Call multicast API.
@@ -153,9 +157,11 @@ class LineBotApi(object):
             'messages': [message.as_json_dict() for message in messages]
         }
 
-        self._post(
+        response = self._post(
             '/v2/bot/message/multicast', data=json.dumps(data), timeout=timeout
         )
+
+        return response
 
     def get_profile(self, user_id, timeout=None):
         """Call get profile API.
